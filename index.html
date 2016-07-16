@@ -17,7 +17,8 @@
 
 			<br class="clear">
 
-			<div class="timeline-wrapper">
+            <div id="content">
+			<!--div class="timeline-wrapper">
 				<h2 class="milestone"><span>&nbsp;2016 / 05&nbsp;</span></h2>
 
 				<dl class="timeline-series">
@@ -30,43 +31,90 @@
                             <a href="http://udn.com/news/story/1/1715122">[聯合新聞網] 黃昭順質詢烏龍又一樁 誤把林生祥當「鈴聲響」</a><br>
 						</p>
 						<br class="clear">
-					</dd><!-- /.timeline-event-content -->
-				</dl><!-- /.timeline-series -->
+					</dd>
+				</dl>
 
-				<dl class="timeline-series">
-					<dt id="20160523" class="timeline-event"><a>05/23 打造客庄浪漫台三線 立委問哪3條</a></dt>
-					<dd class="timeline-event-content" id="20160523EX">
-						<p>
-    						<span class="name">黃昭順</span><br>
-                            <a href="http://www.cna.com.tw/news/aipl/201605230153-1.aspx">[中央通訊社] 打造客庄浪漫台三線 立委問哪3條</a><br>
-                            <a href="http://news.ltn.com.tw/news/politics/breakingnews/1705386">[自由時報] 烏龍質詢 藍營立委問「客家台三線」是哪3條？</a><br>
-						</p>
-						<br class="clear">
-					</dd><!-- /.timeline-event-content -->
-				</dl><!-- /.timeline-series -->
-
-			</div><!-- /.timeline-wrapper -->
+			</div--><!-- /.timeline-wrapper -->
+			</div>
 
 			<br class="clear">
 		</div>
 
 	</div><!-- /.container -->
 
-	<!-- GLOBAL CORE SCRIPTS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="timeline/js/timeliner.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$.timeliner({});
-			$.timeliner({
-				timelineContainer: '#timeline-js',
-				timelineSectionMarker: '.milestone',
-				startState: 'closed',
-				expandAllText: '+ 全部展開',
-				collapseAllText: '- 全部隱藏'
-			});
-		});
-	</script>
+<!-- GLOBAL CORE SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="timeline/js/timeliner.min.js"></script>
+<script>
+$(function(){
+    var allInfo = {};
+
+    function listInit() {
+        for (var ym in allInfo) {
+            var infos = allInfo[ym];
+            var c = '<div class="timeline-wrapper">'
+                + '<h2 class="milestone"><span>&nbsp;' + ym +'&nbsp;</span></h2>';
+            for (var id in infos) {
+                var data = infos[id];
+                c +=
+				'<dl class="timeline-series">'
+				+ '	<dt id="'+ data['id'] +'" class="timeline-event"><a>'+ data['ymd'] +' '+ data['title'] +'</a></dt>'
+				+ '	<dd class="timeline-event-content" id="'+ data['id'] +'EX">'
+				+ '		<p>'
+    			+ '			<span class="name">'+ data['name'] +'</span><br>';
+    			
+    			for (var i in data['links']) {
+        			var d = data['links'][i];
+                    c += '<a href="'+ d.url +'">['+ d.type +'] '+ d.title +'</a><br>';
+                }
+                
+				c += 
+				'		</p>'
+				+ '		<br class="clear">'
+				+ '	</dd>'
+				+ '</dl>';
+            }
+            
+            c += '</div>';
+
+            $('#content').append(c);
+        }
+        
+        $.timeliner({
+        	timelineContainer: '#timeline-js',
+        	timelineSectionMarker: '.milestone',
+        	startState: 'closed',
+        	expandAllText: '+ 全部展開',
+        	collapseAllText: '- 全部隱藏'
+        });
+    }
+
+    $.ajax({
+        dataType: "json",
+        url: "resource.json",
+        success: function(data) {
+            for (var id in data) {
+                var d = data[id];
+                if (typeof allInfo[d.ym] == "undefined" || allInfo[d.ym] == null) {
+                    allInfo[d.ym] = [];
+                }
+                allInfo[d.ym].push(data[id]);
+            }
+
+            listInit();
+        }
+    });
+    
+    $(document).on('click','button',function(){
+        if ($(this).hasClass('tagsort-active')) {
+            $(this).removeClass("btn-default").addClass("btn-primary");
+        } else {
+            $(this).removeClass("btn-primary").addClass("btn-default");
+        }
+    });
+ 
+});
+</script>
 
 </body>
 </html>
