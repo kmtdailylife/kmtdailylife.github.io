@@ -1,10 +1,62 @@
 [
 
-
+    {
+        "id" : "20160727",
+        "title" : "國民黨提1474案擋國營事業預算 表決要至少12天",
+        "name" : "國民黨",
+        "ym" : "2016-07",
+        "ymd" : "2016-07-27",
+        "links" : [
+            {
+                "type" : "聯合影音",
+                "title" : "國民黨提1474案擋國營事業預算 表決要至少12天",
+                "url" : "https://video.udn.com/news/532192"
+            },
+            {
+                "type" : "中時電子報",
+                "title" : "虛耗社會資源 鬧劇一場",
+                "url" : "http://www.chinatimes.com/newspapers/20160727000384-260102"
+            },
+            {
+                "type" : "自由時報",
+                "title" : "國民黨的荒謬鬧劇",
+                "url" : "http://news.ltn.com.tw/news/politics/paper/1015070"
+            }
+        ]
+    },
+    {
+        "id" : "20160723",
+        "title" : "為黨產！ 藍提65萬字修正案由 被抓包有「複製貼上」",
+        "name" : "國民黨",
+        "ym" : "2016-07",
+        "ymd" : "2016-07-23",
+        "links" : [
+            {
+                "type" : "東森新聞",
+                "title" : "為黨產！ 藍提65萬字修正案由 被抓包有「複製貼上」",
+                "url" : "http://news.ebc.net.tw/news.php?nid=30218"
+            },
+            {
+                "type" : "中時電子報",
+                "title" : "卡不當黨產條例 國民黨祭萬言書杯葛",
+                "url" : "http://www.chinatimes.com/realtimenews/20160722002825-260407"
+            },
+            {
+                "type" : "壹電視",
+                "title" : "萬言書遭抓包「複製貼上」　藍委：都是助理寫的！",
+                "url" : "http://www.nexttv.com.tw/news/realtime/politics/11618732"
+            },
+            {
+                "type" : "自由時報",
+                "title" : "國民黨65萬字修正動議 幾乎都是「複製貼上」來的",
+                "url" : "http://news.ltn.com.tw/news/politics/breakingnews/1772134"
+            }
+        ]
+    },
     {
         "id" : "20160715b",
         "title" : "卡「黨產條例」拖字訣？　藍送294案變更議程",
-        "name" : "多位",
+        "name" : "國民黨",
         "ym" : "2016-07",
         "ymd" : "2016-07-15",
         "links" : [
